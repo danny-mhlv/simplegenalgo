@@ -52,3 +52,8 @@ def cross(pair, chrom_len, p_mutation):
         genome2[mutated_gene] = 0 if genome2[mutated_gene] == 1 else 1
 
     return [genome1, genome2]
+
+
+def int_list2str(lst: list):
+    string_ints = [str(n) for n in lst]
+    return "".join(string_ints)

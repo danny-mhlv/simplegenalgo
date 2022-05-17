@@ -12,7 +12,6 @@ RANGE_L = -3
 RANGE_R = 3
 
 step = (RANGE_R - RANGE_L) / 2 ** CHROM_LEN
-print(step)
 
 
 class Individual:
@@ -26,19 +25,19 @@ class Individual:
 population = []
 for i in range(POP_COUNT):
     genotype = myfunc.generate_chrom(CHROM_LEN)
-    phenotype = random.uniform(-3, 3)
+    phenotype = RANGE_L + int(myfunc.int_list2str(genotype), base=2) * step
     fitness = myfunc.get_fitness(phenotype)
 
     population.append(Individual(phenotype, genotype, fitness))
 
-# Generate pairs
-pairs = myfunc.make_pairs(population)
-# Crossing and mutation
-for pair in pairs:
-    if random.uniform(0, 1) <= P_CROSS:
-        children = myfunc.cross(pair, CHROM_LEN, P_MUTATION)
-        population.extend(children)
-# Reduction (Roulette)
+# # Generate pairs
+# pairs = myfunc.make_pairs(population)
+# # Crossing and mutation
+# for pair in pairs:
+#     if random.uniform(0, 1) <= P_CROSS:
+#         children = myfunc.cross(pair, CHROM_LEN, P_MUTATION)
+#         population.extend(children)
+# # Reduction (Roulette)
 
 # X = []
 # for i in range(POP_COUNT):
